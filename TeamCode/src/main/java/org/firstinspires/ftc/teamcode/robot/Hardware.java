@@ -1,6 +1,7 @@
 package org.firstinspires.ftc.teamcode.robot;
 
 import com.qualcomm.robotcore.hardware.DcMotor;
+import com.qualcomm.robotcore.hardware.DcMotorEx;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.hardware.Servo;
@@ -17,7 +18,9 @@ public class Hardware {
 //    public DcMotor leftEncoder;
 //    public DcMotor rightEncoder;
 
-    public DcMotor leftEncoder = null;
+    public DcMotorEx leftEncoder = null;
+    public DcMotorEx rightEncoder = null;
+    public DcMotorEx frontEncoder = null;
 
     HardwareMap hwMap = null;
 
@@ -32,10 +35,14 @@ public class Hardware {
 
         // At convenience, change names and config of RL and RR to BL and BR, respectively.
 
-        frontLeftDrive      = hwMap.get(DcMotor.class,      "FL");
-        frontRightDrive     = hwMap.get(DcMotor.class,      "FR");
-        backLeftDrive       = hwMap.get(DcMotor.class,      "BL");
-        backRightDrive      = hwMap.get(DcMotor.class,      "BR");
+        frontLeftDrive      = hwMap.get(DcMotor.class,      "leftFront");
+        frontRightDrive     = hwMap.get(DcMotor.class,      "rightFront");
+        backLeftDrive       = hwMap.get(DcMotor.class,      "leftRear");
+        backRightDrive      = hwMap.get(DcMotor.class,      "rightRear");
+
+//        leftEncoder = hwMap.get(DcMotorEx.class, "leftEncoder");
+//        rightEncoder = hwMap.get(DcMotorEx.class, "rightEncoder");
+//        frontEncoder = hwMap.get(DcMotorEx.class, "frontEncoder");
 
 //        leftEncoder         = hwMap.get(DcMotor.class,      "LeftEncoder");
 //
