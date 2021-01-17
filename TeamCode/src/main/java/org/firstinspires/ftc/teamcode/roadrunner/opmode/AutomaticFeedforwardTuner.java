@@ -35,7 +35,7 @@ import static org.firstinspires.ftc.teamcode.roadrunner.DriveConstants.rpmToVelo
 @Autonomous(group = "drive")
 public class AutomaticFeedforwardTuner extends LinearOpMode {
     public static final double MAX_POWER = 0.7;
-    public static final double DISTANCE = 100; // in
+    public static final double DISTANCE = 10.0; // in
 
     @Override
     public void runOpMode() throws InterruptedException {
@@ -98,8 +98,8 @@ public class AutomaticFeedforwardTuner extends LinearOpMode {
 
         double maxVel = rpmToVelocity(MAX_RPM);
         double finalVel = MAX_POWER * maxVel;
-        double accel = (finalVel * finalVel) / (2.0 * DISTANCE);
-        double rampTime = Math.sqrt(2.0 * DISTANCE / accel);
+        double rampTime = 2.0 * DISTANCE / finalVel;
+        double accel = finalVel / rampTime;
 
         List<Double> timeSamples = new ArrayList<>();
         List<Double> positionSamples = new ArrayList<>();
