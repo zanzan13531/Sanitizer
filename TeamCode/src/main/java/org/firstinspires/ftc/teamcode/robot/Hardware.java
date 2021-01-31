@@ -35,14 +35,14 @@ public class Hardware {
 
         // At convenience, change names and config of RL and RR to BL and BR, respectively.
 
-        frontLeftDrive      = hwMap.get(DcMotor.class,      "leftFront");
-        frontRightDrive     = hwMap.get(DcMotor.class,      "rightFront");
-        backLeftDrive       = hwMap.get(DcMotor.class,      "leftRear");
+        frontLeftDrive      = hwMap.get(DcMotor.class,      "leftFront");  //left odometry encoder
+        frontRightDrive     = hwMap.get(DcMotor.class,      "rightFront");  //right odometry encoder
+        backLeftDrive       = hwMap.get(DcMotor.class,      "leftRear");  //back/front odometry encoder
         backRightDrive      = hwMap.get(DcMotor.class,      "rightRear");
 
-//        leftEncoder = hwMap.get(DcMotorEx.class, "leftEncoder");
-//        rightEncoder = hwMap.get(DcMotorEx.class, "rightEncoder");
-//        frontEncoder = hwMap.get(DcMotorEx.class, "frontEncoder");
+        //leftEncoder = hwMap.get(DcMotorEx.class, "leftEncoder");
+        //rightEncoder = hwMap.get(DcMotorEx.class, "rightEncoder");
+        //frontEncoder = hwMap.get(DcMotorEx.class, "frontEncoder");
 
 //        leftEncoder         = hwMap.get(DcMotor.class,      "LeftEncoder");
 //
