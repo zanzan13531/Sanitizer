@@ -15,6 +15,9 @@ public class Hardware {
     public DcMotor backLeftDrive = null;
     public DcMotor backRightDrive = null;
 
+    public DcMotor intakeLeft = null;
+    public DcMotor intakeRight = null;
+
 //    public DcMotor leftEncoder;
 //    public DcMotor rightEncoder;
 
@@ -40,6 +43,9 @@ public class Hardware {
         backLeftDrive       = hwMap.get(DcMotor.class,      "leftRear");  //back/front odometry encoder
         backRightDrive      = hwMap.get(DcMotor.class,      "rightRear");
 
+        intakeLeft = hwMap.get(DcMotor.class, "intakeLeft");
+        intakeRight = hwMap.get(DcMotor.class, "intakeRight");
+
         //leftEncoder = hwMap.get(DcMotorEx.class, "leftEncoder");
         //rightEncoder = hwMap.get(DcMotorEx.class, "rightEncoder");
         //frontEncoder = hwMap.get(DcMotorEx.class, "frontEncoder");
@@ -52,5 +58,8 @@ public class Hardware {
         frontRightDrive.setDirection(DcMotor.Direction.REVERSE);
         backLeftDrive.  setDirection(DcMotor.Direction.FORWARD);
         backRightDrive. setDirection(DcMotor.Direction.REVERSE);
+
+        intakeLeft.  setDirection(DcMotor.Direction.FORWARD);
+        intakeRight. setDirection(DcMotor.Direction.REVERSE);
     }
 }
