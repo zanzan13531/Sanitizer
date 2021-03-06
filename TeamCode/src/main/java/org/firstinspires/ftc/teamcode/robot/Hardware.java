@@ -18,6 +18,10 @@ public class Hardware {
     public DcMotor intakeLeft = null;
     public DcMotor intakeRight = null;
 
+    public Servo clawLeft = null;
+    public Servo clawRight = null;
+    public Servo arm = null;
+
 //    public DcMotor leftEncoder;
 //    public DcMotor rightEncoder;
 
@@ -46,18 +50,14 @@ public class Hardware {
         intakeLeft = hwMap.get(DcMotor.class, "intakeLeft");
         intakeRight = hwMap.get(DcMotor.class, "intakeRight");
 
-        //leftEncoder = hwMap.get(DcMotorEx.class, "leftEncoder");
-        //rightEncoder = hwMap.get(DcMotorEx.class, "rightEncoder");
-        //frontEncoder = hwMap.get(DcMotorEx.class, "frontEncoder");
+        arm = hwMap.get(Servo.class, "arm");
+        clawLeft = hwMap.get(Servo.class, "clawLeft");
+        clawRight = hwMap.get(Servo.class, "clawRight");
 
-//        leftEncoder         = hwMap.get(DcMotor.class,      "LeftEncoder");
-//
-//        leftEncoder         = hwMap.dcMotor.get("leftEncoder");
-
-        frontLeftDrive. setDirection(DcMotor.Direction.FORWARD); // Set to REVERSE if using AndyMark motors
-        frontRightDrive.setDirection(DcMotor.Direction.REVERSE);
-        backLeftDrive.  setDirection(DcMotor.Direction.FORWARD);
-        backRightDrive. setDirection(DcMotor.Direction.REVERSE);
+        frontLeftDrive. setDirection(DcMotor.Direction.REVERSE); // Set to REVERSE if using AndyMark motors
+        frontRightDrive.setDirection(DcMotor.Direction.FORWARD);
+        backLeftDrive.  setDirection(DcMotor.Direction.REVERSE);
+        backRightDrive. setDirection(DcMotor.Direction.FORWARD);
 
         intakeLeft.  setDirection(DcMotor.Direction.FORWARD);
         intakeRight. setDirection(DcMotor.Direction.REVERSE);
