@@ -18,10 +18,10 @@ public class Drive {
     Boolean a_pressed = false;
 
     public Drive(Hardware hardware) {
-        robot = hardware; // Constructor
+        robot = hardware;
     }
 
-    public void drive(Gamepad gamepad, Telemetry telemetryInstance){ // The called method.
+    public void drive(Gamepad gamepad, Telemetry telemetryInstance) {
 
         /* Toggle for speed control. The boolean variable compensates for driver slowness.
          */

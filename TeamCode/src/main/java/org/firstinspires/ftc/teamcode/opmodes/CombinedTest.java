@@ -5,11 +5,15 @@ import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
 import org.firstinspires.ftc.teamcode.robot.Drive;
 import org.firstinspires.ftc.teamcode.robot.Hardware;
+import org.firstinspires.ftc.teamcode.robot.Intake;
+import org.firstinspires.ftc.teamcode.robot.Wobbler;
 
-@TeleOp(name = "Test: Billy", group = "Test")
-public class intakeTest extends LinearOpMode {
+@TeleOp(name = "Test: Combined", group = "Test")
+public class CombinedTest extends LinearOpMode {
     Hardware robot = new Hardware();
     Drive drive = new Drive(robot);
+    Intake intake = new Intake(robot);
+    Wobbler wobbler = new Wobbler(robot);
 
     public void runOpMode() {
 
@@ -19,20 +23,14 @@ public class intakeTest extends LinearOpMode {
 
         while(opModeIsActive()) {
 
-            if (gamepad1.right_bumper) {
-                robot.intakeLeft.setPower(0.5);
-                robot.intakeRight.setPower(0.5);
-            } else if (gamepad1.left_bumper){
-                robot.intakeLeft.setPower(-0.5);
-                robot.intakeRight.setPower(-0.5);
-            } else {
-                robot.intakeLeft.setPower(0);
-                robot.intakeRight.setPower(0);
-            }
+            drive.drive(gamepad1, telemetry);
+            intake.intake(gamepad1, telemetry);
+            wobbler.wobble(gamepad1, telemetry);
 
             telemetry.update();
 
             sleep(25);
         }
     }
+
 }
