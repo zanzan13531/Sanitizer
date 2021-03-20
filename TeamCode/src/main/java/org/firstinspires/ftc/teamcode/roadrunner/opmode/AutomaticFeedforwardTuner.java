@@ -96,18 +96,53 @@ public class AutomaticFeedforwardTuner extends LinearOpMode {
         telemetry.addLine("Running...");
         telemetry.update();
 
+//        double maxVel = rpmToVelocity(MAX_RPM);
+//        double finalVel = MAX_POWER * maxVel;
+//        double rampTime = 2.0 * DISTANCE / finalVel;
+//        double accel = finalVel / rampTime;
+
+        telemetry.clearAll();
+        telemetry.addLine(":0");
+        telemetry.update();
+
         double maxVel = rpmToVelocity(MAX_RPM);
+
+        telemetry.clearAll();
+        telemetry.addLine(":1");
+        telemetry.update();
         double finalVel = MAX_POWER * maxVel;
-        double rampTime = 2.0 * DISTANCE / finalVel;
-        double accel = finalVel / rampTime;
+
+        telemetry.addLine(":2");
+        telemetry.update();
+        double accel = (finalVel * finalVel) / (2.0 * DISTANCE);
+
+        telemetry.addLine(":3");
+        telemetry.update();
+        double rampTime = Math.sqrt(2.0 * DISTANCE / accel);
+
+        telemetry.addLine(":4");
+        telemetry.update();
+
+        telemetry.addLine(":1");
+        telemetry.update();
 
         List<Double> timeSamples = new ArrayList<>();
         List<Double> positionSamples = new ArrayList<>();
         List<Double> powerSamples = new ArrayList<>();
 
+        telemetry.addLine(":2");
+        telemetry.update();
+
         drive.setPoseEstimate(new Pose2d());
 
+        telemetry.addLine(":3");
+        telemetry.update();
+
         double startTime = clock.seconds();
+
+        telemetry.addLine(":4");
+        telemetry.update();
+
         while (!isStopRequested()) {
             double elapsedTime = clock.seconds() - startTime;
             if (elapsedTime > rampTime) {
