@@ -9,6 +9,8 @@ import com.qualcomm.robotcore.hardware.CRServo;
 import com.qualcomm.hardware.bosch.BNO055IMU;
 import com.qualcomm.hardware.bosch.JustLoggingAccelerationIntegrator;
 
+import org.firstinspires.ftc.teamcode.util.Encoder;
+
 public class Hardware {
     public DcMotor frontLeftDrive = null;
     public DcMotor frontRightDrive = null;
@@ -25,9 +27,9 @@ public class Hardware {
     public Servo wobbleArm3 = null;
     public Servo wobbleArm4 = null;
 
-    public DcMotorEx leftEncoder = null;
-    public DcMotorEx rightEncoder = null;
-    public DcMotorEx frontEncoder = null;
+    public Encoder leftEncoder = null;
+    public Encoder rightEncoder = null;
+    public Encoder frontEncoder = null;
 
     HardwareMap hwMap = null;
 
@@ -54,8 +56,17 @@ public class Hardware {
         wobbleArm2 = hwMap.get(Servo.class, "arm2");
         wobbleArm3 = hwMap.get(Servo.class, "arm3");
         wobbleArm4 = hwMap.get(Servo.class, "arm4");
+
         wobbleClawLeft = hwMap.get(Servo.class, "clawLeft");
         wobbleClawRight = hwMap.get(Servo.class, "clawRight");
+
+        leftEncoder = new Encoder(hwMap.get(DcMotorEx.class, "intakeLeft"));
+        rightEncoder = new Encoder(hwMap.get(DcMotorEx.class, "intakeRight"));
+        frontEncoder = new Encoder(hwMap.get(DcMotorEx.class, "frontEncoder"));
+
+        leftEncoder.setDirection(Encoder.Direction.FORWARD);
+        rightEncoder.setDirection(Encoder.Direction.REVERSE);
+        frontEncoder.setDirection(Encoder.Direction.FORWARD);
 
         frontLeftDrive. setDirection(DcMotor.Direction.REVERSE); // Set to REVERSE if using AndyMark motors
         frontRightDrive.setDirection(DcMotor.Direction.FORWARD);
