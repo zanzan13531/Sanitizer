@@ -52,10 +52,10 @@ public class Drive {
         /* All three components of robot movement are combined into smooth motion in the motors.
          */
 
-        double BL = -FORWARDNESS - STRAFENESS + TURNYNESS;
-        double BR = -FORWARDNESS + STRAFENESS - TURNYNESS;
-        double FL = -FORWARDNESS + STRAFENESS + TURNYNESS;
-        double FR = -FORWARDNESS - STRAFENESS - TURNYNESS;
+        double BL = FORWARDNESS + STRAFENESS - TURNYNESS;
+        double BR = FORWARDNESS - STRAFENESS + TURNYNESS;
+        double FL = FORWARDNESS - STRAFENESS - TURNYNESS;
+        double FR = FORWARDNESS + STRAFENESS + TURNYNESS;
 
         /* MAX value ensures the motors are not told to run beyond their peaks while maintaining
         proportions between three components of movement. */

@@ -31,6 +31,9 @@ public class Hardware {
     public Encoder rightEncoder = null;
     public Encoder frontEncoder = null;
 
+    public DcMotor shooter0 = null;
+    public DcMotor shooter1 = null;
+
     HardwareMap hwMap = null;
 
     public Hardware()
@@ -52,6 +55,7 @@ public class Hardware {
         intakeLeft = hwMap.get(DcMotor.class, "intakeLeft");
         intakeRight = hwMap.get(DcMotor.class, "intakeRight");
 
+        // 1-4, front-back
         wobbleArm1 = hwMap.get(Servo.class, "arm1");
         wobbleArm2 = hwMap.get(Servo.class, "arm2");
         wobbleArm3 = hwMap.get(Servo.class, "arm3");
@@ -62,21 +66,26 @@ public class Hardware {
 
         leftEncoder = new Encoder(hwMap.get(DcMotorEx.class, "intakeLeft"));
         rightEncoder = new Encoder(hwMap.get(DcMotorEx.class, "intakeRight"));
-        frontEncoder = new Encoder(hwMap.get(DcMotorEx.class, "frontEncoder"));
+        frontEncoder = new Encoder(hwMap.get(DcMotorEx.class, "shooter0"));
+
+        shooter0 = hwMap.get(DcMotor.class, "shooter0");
+        shooter1 = hwMap.get(DcMotor.class, "shooter1");
 
         leftEncoder.setDirection(Encoder.Direction.FORWARD);
         rightEncoder.setDirection(Encoder.Direction.REVERSE);
         frontEncoder.setDirection(Encoder.Direction.FORWARD);
 
-        frontLeftDrive. setDirection(DcMotor.Direction.REVERSE); // Set to REVERSE if using AndyMark motors
-        frontRightDrive.setDirection(DcMotor.Direction.FORWARD);
-        backLeftDrive.  setDirection(DcMotor.Direction.REVERSE);
-        backRightDrive. setDirection(DcMotor.Direction.FORWARD);
+        frontLeftDrive. setDirection(DcMotor.Direction.FORWARD);
+        frontRightDrive.setDirection(DcMotor.Direction.REVERSE);
+        backLeftDrive.  setDirection(DcMotor.Direction.FORWARD);
+        backRightDrive. setDirection(DcMotor.Direction.REVERSE);
 
         intakeLeft.  setDirection(DcMotor.Direction.FORWARD);
         intakeRight. setDirection(DcMotor.Direction.REVERSE);
 
         wobbleArm2.setDirection(Servo.Direction.REVERSE);
         wobbleArm4.setDirection(Servo.Direction.REVERSE);
+
+        shooter1.setDirection(DcMotorSimple.Direction.REVERSE);
     }
 }

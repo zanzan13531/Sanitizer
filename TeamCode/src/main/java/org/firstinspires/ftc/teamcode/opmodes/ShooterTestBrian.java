@@ -4,28 +4,27 @@ import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
 import org.firstinspires.ftc.teamcode.robot.Hardware;
-import org.firstinspires.ftc.teamcode.robot.Wobbler;
+import org.firstinspires.ftc.teamcode.robot.Shooter;
+import org.firstinspires.ftc.teamcode.robot.ShooterBrian;
 
-@TeleOp(name = "Test: Wobbler", group = "Test")
-public class WobblerTest extends LinearOpMode {
+@TeleOp(name = "Test: Shooter Brian", group = "Test")
+public class ShooterTestBrian extends LinearOpMode {
     Hardware robot = new Hardware();
-    Wobbler wobbler = new Wobbler(robot);
+    ShooterBrian shooter = new ShooterBrian(robot);
 
     public void runOpMode() {
 
         robot.init(hardwareMap);
-        wobbler.init();
 
         waitForStart();
 
         while(opModeIsActive()) {
 
-            wobbler.wobble(gamepad1, telemetry);
+            shooter.shoot(gamepad1, telemetry);
 
             telemetry.update();
 
             sleep(25);
         }
     }
-
 }
